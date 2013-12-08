@@ -1,6 +1,6 @@
 package examples;
 
-import com.dindane.becker.App;
+import com.dindane.cacophony.App;
 
 public class Main {
     public static void main(String[] args) {

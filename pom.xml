@@ -7,4 +7,18 @@
   <groupId>becker</groupId>
   <artifactId>becker</artifactId>
   <version>0.1-SNAPSHOT</version>
+
+  <dependencies>
+    <dependency>
+      <groupId>io.undertow</groupId>
+      <artifactId>undertow-core</artifactId>
+      <version>1.0.0.Beta20</version>
+    </dependency>
+
+    <dependency>
+      <groupId>io.undertow</groupId>
+      <artifactId>undertow-servlet</artifactId>
+      <version>1.0.0.Beta20</version>
+    </dependency>
+  </dependencies>
 </project>

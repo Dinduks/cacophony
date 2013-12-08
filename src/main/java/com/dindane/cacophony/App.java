@@ -2,9 +2,10 @@ package com.dindane.cacophony;
 
 import io.undertow.Undertow;
 import io.undertow.server.handlers.PathHandler;
-import io.undertow.util.Headers;
+import io.undertow.util.HttpString;
 
 import java.util.HashMap;
+import java.util.Map;
 
 import static io.undertow.Handlers.path;
 
@@ -19,15 +20,22 @@ public class App {
     }
 
     public void get(String url, Action action) {
-        Route route = new Route(url, Method.GET);
-        routes.put(route, action);
+        get(url, new HashMap<>(), action);
+    }
+
+    public void get(String url, Map<String, String> headers, Action action) {
+        routes.put(new Route(url, Method.GET, headers), action);
     }
 
     public void run() {
         PathHandler path = path();
         routes.entrySet().stream().forEach(entrySet -> {
-            path.addPath(entrySet.getKey().getRoute(), exchange -> {
-                exchange.getResponseHeaders().put(Headers.CONTENT_TYPE, "text/plain");
+            path.addPath(entrySet.getKey().getUrl(), exchange -> {
+                entrySet.getKey().getHeaders().entrySet().stream().forEach((e) -> {
+                    exchange.getResponseHeaders().put(new HttpString(e.getKey()),
+                            e.getValue());
+                });
+
                 exchange.getResponseSender().send(
                         entrySet.getValue().accept(exchange.getQueryParameters()));
             });

@@ -7,8 +7,6 @@ import io.undertow.util.HttpString;
 import java.util.HashMap;
 import java.util.Map;
 
-import static io.undertow.Handlers.path;
-
 public class App {
     private HashMap<Route, Action> routes = new HashMap<>();
     private String hostname;
@@ -28,7 +26,7 @@ public class App {
     }
 
     public void run() {
-        PathHandler path = path();
+        PathHandler path = new PathHandler();
 
         routes.forEach((route, action) -> {
             path.addPath(route.getUrl(), exchange -> {

@@ -29,15 +29,15 @@ public class App {
 
     public void run() {
         PathHandler path = path();
-        routes.entrySet().stream().forEach(entrySet -> {
-            path.addPath(entrySet.getKey().getUrl(), exchange -> {
-                entrySet.getKey().getHeaders().entrySet().stream().forEach((e) -> {
-                    exchange.getResponseHeaders().put(new HttpString(e.getKey()),
-                            e.getValue());
+
+        routes.forEach((route, action) -> {
+            path.addPath(route.getUrl(), exchange -> {
+                route.getHeaders().forEach((k, v) -> {
+                    exchange.getResponseHeaders().put(new HttpString(k), v);
                 });
 
                 exchange.getResponseSender().send(
-                        entrySet.getValue().accept(exchange.getQueryParameters()));
+                        action.accept(exchange.getQueryParameters()));
             });
         });
 

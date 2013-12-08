@@ -18,7 +18,7 @@ public class Main {
             HashMap<String, String> headers = new HashMap<>();
             headers.put("Hey!", "It works!");
             get("/test-headers", headers, (params) -> {
-                return "Check the response headers for the framework's name!";
+                return "Check the response headers!";
             });
         }}.run();
     }

@@ -28,7 +28,8 @@ public class App {
         routes.entrySet().stream().forEach(entrySet -> {
             path.addPath(entrySet.getKey().getRoute(), exchange -> {
                 exchange.getResponseHeaders().put(Headers.CONTENT_TYPE, "text/plain");
-                exchange.getResponseSender().send(entrySet.getValue().accept());
+                exchange.getResponseSender().send(
+                        entrySet.getValue().accept(exchange.getQueryParameters()));
             });
         });
 

@@ -12,13 +12,13 @@
     <dependency>
       <groupId>io.undertow</groupId>
       <artifactId>undertow-core</artifactId>
-      <version>1.0.0.Beta20</version>
+      <version>1.0.0.Beta28</version>
     </dependency>
 
     <dependency>
       <groupId>io.undertow</groupId>
       <artifactId>undertow-servlet</artifactId>
-      <version>1.0.0.Beta20</version>
+      <version>1.0.0.Beta28</version>
     </dependency>
 
     <dependency>

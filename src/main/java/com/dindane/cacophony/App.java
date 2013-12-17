@@ -52,7 +52,7 @@ public class App {
         PathHandler path = new PathHandler();
 
         routes.forEach((route, action) -> {
-            path.addPath(route.getUrl(), exchange -> {
+            path.addExactPath(route.getUrl(), exchange -> {
                 route.getHeaders().forEach((k, v) -> {
                     exchange.getResponseHeaders().put(new HttpString(k), v);
                 });

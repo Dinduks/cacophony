@@ -34,6 +34,12 @@ public class Main {
             get("/file-example", (params) -> {
                 return Ok(Paths.get("src/main/java/examples/dave.jpg"));
             });
+
+            headers.clear();
+            headers.put("Content-Disposition", "attachment; filename=dave.jpg");
+            get("/file-download-example", headers, (params) -> {
+                return Ok(Paths.get("src/main/java/examples/dave.jpg"));
+            });
         }}.run();
     }
 }

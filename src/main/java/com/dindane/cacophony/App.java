@@ -1,5 +1,6 @@
 package com.dindane.cacophony;
 
+import com.dindane.cacophony.response.Response;
 import de.neuland.jade4j.Jade4J;
 import de.neuland.jade4j.JadeConfiguration;
 import de.neuland.jade4j.template.FileTemplateLoader;
@@ -57,8 +58,10 @@ public class App {
                     exchange.getResponseHeaders().put(new HttpString(k), v);
                 });
 
-                exchange.getResponseSender().send(
-                        action.accept(exchange.getQueryParameters()));
+                Response response = action.accept(exchange.getQueryParameters());
+
+                exchange.setResponseCode(response.getStatusCode());
+                response.send(exchange);
             });
         });
 

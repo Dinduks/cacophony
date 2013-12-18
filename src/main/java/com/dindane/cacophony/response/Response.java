@@ -1,23 +1,14 @@
 package com.dindane.cacophony.response;
 
+import io.undertow.io.Sender;
+
 import java.nio.ByteBuffer;
 
-public class Response {
-    private ByteBuffer content;
-    private String contentType;
-    private int statusCode;
+abstract public class Response {
+    protected String contentType;
+    protected int statusCode;
 
-    public Response(int statusCode) {
-        this.statusCode = statusCode;
-    }
-
-    public ByteBuffer getContent() {
-        return content;
-    }
-
-    public void setContent(ByteBuffer content) {
-        this.content = content;
-    }
+    abstract public void send(Sender sender);
 
     public String getContentType() {
         return contentType;

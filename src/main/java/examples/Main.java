@@ -3,6 +3,7 @@ package examples;
 import com.dindane.cacophony.App;
 import static com.dindane.cacophony.response.Responses.*;
 
+import java.nio.channels.FileChannel;
 import java.util.HashMap;
 
 public class Main {
@@ -11,13 +12,10 @@ public class Main {
             setTemplatesDir("src/main/java/examples/templates");
 
             get("/hello", (params) -> Ok("Hello world!"));
-
             get("/bad-request-example", (params) -> BadRequest("I'm bad!"));
             get("/not-found-example", (params) -> NotFound("404"));
 
-            get("/params-example", (params) -> {
-                return Ok(params.toString());
-            });
+            get("/params-example", (params) -> Ok(params.toString()));
 
             HashMap<String, String> headers = new HashMap<>();
             headers.put("Hey!", "It works!");

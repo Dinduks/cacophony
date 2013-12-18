@@ -61,7 +61,7 @@ public class App {
                 Response response = action.accept(exchange.getQueryParameters());
 
                 exchange.setResponseCode(response.getStatusCode());
-                response.send(exchange.getResponseSender());
+                response.send(exchange);
             });
         });
 

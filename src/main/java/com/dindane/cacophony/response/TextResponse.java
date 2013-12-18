@@ -1,6 +1,6 @@
 package com.dindane.cacophony.response;
 
-import io.undertow.io.Sender;
+import io.undertow.server.HttpServerExchange;
 
 import java.nio.ByteBuffer;
 
@@ -12,7 +12,7 @@ public class TextResponse extends Response {
         setStatusCode(statusCode);
     }
 
-    public void send(Sender sender) {
-        sender.send(content);
+    public void send(HttpServerExchange exchange) {
+        exchange.getResponseSender().send(content);
     }
 }

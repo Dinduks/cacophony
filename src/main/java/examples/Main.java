@@ -4,6 +4,7 @@ import com.dindane.cacophony.App;
 import static com.dindane.cacophony.response.Responses.*;
 
 import java.nio.channels.FileChannel;
+import java.nio.file.Paths;
 import java.util.HashMap;
 
 public class Main {
@@ -28,6 +29,10 @@ public class Main {
                 parameters.put("pageTitle", "Template example");
                 parameters.put("name", params.get("name").getFirst());
                 return Ok(render("index", parameters));
+            });
+
+            get("/file-example", (params) -> {
+                return Ok(Paths.get("src/main/java/examples/dave.jpg"));
             });
         }}.run();
     }

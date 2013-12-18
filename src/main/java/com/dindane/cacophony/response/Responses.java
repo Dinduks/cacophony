@@ -1,5 +1,7 @@
 package com.dindane.cacophony.response;
 
+import io.undertow.server.HttpServerExchange;
+
 import java.nio.file.Path;
 
 public class Responses {
@@ -25,6 +27,10 @@ public class Responses {
 
     public static Response NotFound(Path path) {
         return FileResponseBuilder(path, 404);
+    }
+
+    public static Response Redirect(String url) {
+        return new RedirectResponse(url);
     }
 
     private static Response FileResponseBuilder(Path path, int statusCode) {

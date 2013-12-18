@@ -40,6 +40,10 @@ public class Main {
             get("/file-download-example", headers, (params) -> {
                 return Ok(Paths.get("src/main/java/examples/dave.jpg"));
             });
+
+            get("/redirect-example", (params) -> {
+                return Redirect("http://github.com/dinduks/cacophony");
+            });
         }}.run();
     }
 }

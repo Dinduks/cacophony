@@ -1,7 +1,5 @@
 package com.dindane.cacophony.response;
 
-import io.undertow.server.HttpServerExchange;
-
 import java.nio.file.Path;
 
 public class Responses {

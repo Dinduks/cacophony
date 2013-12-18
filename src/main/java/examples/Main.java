@@ -1,11 +1,11 @@
 package examples;
 
 import com.dindane.cacophony.App;
-import static com.dindane.cacophony.response.Responses.*;
 
-import java.nio.channels.FileChannel;
 import java.nio.file.Paths;
 import java.util.HashMap;
+
+import static com.dindane.cacophony.response.Responses.*;
 
 public class Main {
     public static void main(String[] args) {

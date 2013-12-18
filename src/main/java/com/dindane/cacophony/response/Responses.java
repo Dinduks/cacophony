@@ -1,8 +1,6 @@
 package com.dindane.cacophony.response;
 
 import java.nio.file.Path;
-import java.nio.channels.FileChannel;
-import java.nio.ByteBuffer;
 
 public class Responses {
     public static Response Ok(String content) {
